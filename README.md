@@ -1,2 +1,2 @@
 # dev-log
-A Django web app that helps you log your coding projects.
+A Django web app that helps users log their coding projects.
