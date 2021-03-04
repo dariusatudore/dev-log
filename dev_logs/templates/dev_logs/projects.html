@@ -1,0 +1,21 @@
+{% extends "dev_logs/base.html" %}
+
+{% block page_header %}
+    <h2>Projects</h2>
+{% endblock page_header %}
+
+{% block content %}
+
+<ul>
+    {% for project in projects %}
+        <li><h3>
+            <a href="{% url 'dev_logs:project' project.id %}">{{ project }}</a>
+        </h3></li>
+    {% empty %}
+        <li><h3>No projects have been added yet.</h3></li>
+    {% endfor %}
+</ul>
+
+<h3><a href="{% url 'dev_logs:new_project' %}">Add a new project</a></h3>
+
+{% endblock content %}

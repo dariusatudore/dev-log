@@ -1,0 +1,32 @@
+{% extends 'dev_logs/base.html' %}
+
+{% block page_header %}
+    <h3>{{ project }}</h3>
+{% endblock page_header %}
+
+
+{% block content %}
+
+<p>Project: {{ project }}</p>
+
+<p>Entries:</p>
+<p>
+    <a href="{% url 'dev_logs:new_entry' project.id %}">Add new entry</a>
+</p>
+<ul>
+    {% for entry in entries %}
+       <div class="card mb-3">
+           <h4 class="card-header">
+               {{ entry.date_added|date:'d M Y, H:i' }}
+               <small><a href="{% url 'dev_logs:edit_entry' entry.id %}">edit entry</a></small>
+           </h4>
+           <div class="card-body">
+               {{ entry.text|linebreaks }}
+           </div>
+       </div>
+    {% empty %}
+        <p>There are no entries for this project yet.</p>
+    {% endfor %}
+</ul>
+
+{% endblock content %}

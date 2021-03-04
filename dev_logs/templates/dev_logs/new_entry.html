@@ -1,0 +1,14 @@
+{% extends "dev_logs/base.html" %}
+
+{% block content %}
+
+<p><a href="{% url 'dev_logs:project' project.id %}">{{ project }}</a></p>
+
+<p>Add a new entry:</p>
+<form action="{% url 'dev_logs:new_entry' project.id %}" method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name='submit'>Add entry</button>
+</form>
+
+{% endblock content %}

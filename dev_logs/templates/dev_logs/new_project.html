@@ -1,0 +1,12 @@
+{% extends "dev_logs/base.html" %}
+
+{% block content %}
+<p>Add a new project:</p>
+
+<form action="{% url 'dev_logs:new_project' %}" method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="submit">Add project</button>
+</form>
+
+{% endblock content %}
